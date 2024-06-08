@@ -33,7 +33,7 @@
    _Customizations_
 
    - Custom Morgan Format: Defines a custom logging format including method, URL, and timestamp.
-   - Logger Configuration: Logs messages to a custom logger instance defined in ./config/logger.js.
+   - Logger Configuration: Logs messages to a custom logger instance defined in ./utils/logger.js.
 
 3. config/database.js -->
 
@@ -66,7 +66,7 @@
 
    - Logger Configuration
 
-     - Modify the transports array in the config/logger.js file to specify the desired log filenames and severity levels.
+     - Modify the transports array in the utils/logger.js file to specify the desired log filenames and severity levels.
      - Customize the log filenames, levels, and formats according to the project requirements.
 
    - Usage
@@ -139,7 +139,7 @@
 
    - Controller Configuration
 
-     - Customize the controller functions in the CURD_Operation.js file according to the application's requirements.
+     - Customize the controller functions in the user.controller.js file according to the application's requirements.
      - Modify the database model imports (require("./module/client")) and logger imports (require('./utils/logger')) as necessary.
 
    - Usage
