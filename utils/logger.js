@@ -7,29 +7,18 @@ const excludeErrorLevel = winston.format((info) => {
     return info;
 });
 
-const infoConsoleFormat = winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.splat(),
-);
-
 const infoLogFormat = winston.format.combine(
     winston.format.timestamp(),
-    winston.format.splat(),
-    excludeErrorLevel(),
+    excludeErrorLevel()
 );
 
 const errorLogFormat = winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.splat(),
-    // customFormat
+    winston.format.timestamp()
 );
 
 const Logger = winston.createLogger({
     transports: [
-        new winston.transports.Console({ level: "info", format: infoConsoleFormat }),
-
         new winston.transports.File({ filename: "logs/info.log", level: "info", format: infoLogFormat }),
-
         new winston.transports.File({ filename: "logs/error.log", level: "error", format: errorLogFormat })
     ]
 });
