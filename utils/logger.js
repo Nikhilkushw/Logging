@@ -2,15 +2,14 @@ const winston = require("winston");
 
 const excludeErrorLevel = winston.format((info) => {
     if(info.level === 'error'){
-        return false; // Exclude error messages from this format
+        return false;
     }
-    return info; // Include other log messages
+    return info;
 });
 
 const infoConsoleFormat = winston.format.combine(
-    winston.format.timestamp(), // Add a timestamp to log messages
-    winston.format.splat(), // Allow message formatting with placeholders
-    // customFormat // Use the custom log message format defined earlier
+    winston.format.timestamp(),
+    winston.format.splat(),
 );
 
 const infoLogFormat = winston.format.combine(
