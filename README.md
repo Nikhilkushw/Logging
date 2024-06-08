@@ -35,7 +35,7 @@
    - Custom Morgan Format: Defines a custom logging format including method, URL, and timestamp.
    - Logger Configuration: Logs messages to a custom logger instance defined in ./config/logger.js.
 
-3. config folder set up --> database.js and logger.js files
+3. config/database.js -->
 
    _database.js file_
 
@@ -56,6 +56,8 @@
    - _Dependencies_
      - Sequelize: A powerful Node.js ORM for PostgreSQL, MySQL, SQLite, and other databases.
 
+4. utils/logger.js -->
+   
    _logger.js file_
 
    - Install Winston
@@ -75,7 +77,7 @@
    - Dependencies
      - Winston: A versatile logging library for Node.js applications.
 
-4. module folder --> client.js file
+5. module/client.js -->
 
    _client.js file_
 
@@ -102,7 +104,7 @@
 
      - Sequelize: A powerful Node.js ORM for PostgreSQL, MySQL, SQLite, and other databases.
 
-5. router folder --> route.js file
+6. router/route.js -->
 
    - Install Express
 
@@ -129,26 +131,26 @@
 
      - Express: Web application framework for Node.js.
 
-6. CURD_Operation.js file
+7. controllers/user.controller.js -->
 
    - Install Dependencies
 
-     - Ensure all required dependencies are installed in your Node.js project
+     - Ensure all required dependencies are installed in the Node.js project
 
    - Controller Configuration
 
      - Customize the controller functions in the CURD_Operation.js file according to the application's requirements.
-     - Modify the database model imports (require("./module/client")) and logger imports (require('./config/logger')) as necessary.
+     - Modify the database model imports (require("./module/client")) and logger imports (require('./utils/logger')) as necessary.
 
    - Usage
 
-     - Import the controller functions (getById, post, put, deletData) in the Express router file (router/route.js) to handle corresponding HTTP requests.
+     - Import the controller functions (getUserById, createUser, updateUser, deleteUser) in the Express router file (router/route.js) to handle corresponding HTTP requests.
 
    - Dependencies
      - Sequelize: A powerful Node.js ORM for PostgreSQL, MySQL, SQLite, and other databases (if used for database operations).
      - Winston: A versatile logging library for Node.js applications (if used for logging).
 
-7. package.json file
+8. package.json file
 
    - Dependencies
 
@@ -162,42 +164,4 @@
      - pg-hstore: Serialize and deserialize JSON data to hstore format for PostgreSQL.
      - Sequelize: A promise-based Node.js ORM for PostgreSQL, MySQL, SQLite, and other databases.
      - Winston: A versatile logging library for Node.js applications.
-
-   
 _____________________________________________________________________________________________________________
-   - index.js:
-
-     - This is the entry point of the application.
-     - It initializes the Express application and sets up middleware (such as body-parser, morgan).
-     - It imports required modules (express, body-parser, morgan, etc.).
-     - It connects to the PostgreSQL database using Sequelize.
-     - It defines routes by importing the router from router/route.js.
-     - It starts the Express server to listen for incoming requests on a specified port.
-
-   - config/database.js:
-
-     - This file exports a Sequelize instance configured to connect to the PostgreSQL database.
-     - It defines the database credentials (username, password, host, dialect) required for establishing the connection.
-
-   - config/logger.js:
-
-     - This file exports a Winston logger instance.
-     - It configures the logger to write logs to separate files based on the log level (info.log for info logs and error.log for error logs).
-
-   - CURD_Operation.js:
-
-     - This file exports controller functions for handling CRUD operations.
-     - It defines functions like getById, post, put, deletData, each corresponding to a CRUD operation.
-     - Each function interacts with the database (using Sequelize models) to perform the respective CRUD operation.
-     - It also logs relevant information using the Winston logger instance.
-
-   - module/client.js:
-
-     - This file exports a Sequelize model definition for the client table in the database.
-     - It defines the structure of the client table, including attributes like name, email, password, etc.
-
-   - router/route.js:
-
-     - This file exports an Express router instance.
-     - It defines route handlers for different HTTP endpoints.
-     - It imports controller functions from CURD_Operation.js and assigns them to corresponding routes (GET, POST, PUT, DELETE).
